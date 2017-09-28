@@ -1,0 +1,8 @@
+{
+    "author" : "lsq",
+    "date"   : "2017-09-28",
+    "name"   : "testplugin",
+    "version": "2017.09.28.1",
+    "dependences" : [],
+    "keys"   : ["HMPlugin"]
+}

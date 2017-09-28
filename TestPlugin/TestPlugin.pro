@@ -4,11 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT       += widgets uiplugin
 
 TARGET = TestPlugin
 TEMPLATE = lib
-
+QMAKE_LIBS_OPENGL = -lGL
 DEFINES += TESTPLUGIN_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
@@ -23,13 +23,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        testplugin.cpp
+        testplugin.cpp \
+    testwidget.cpp
 
 HEADERS += \
         testplugin.h \
-        testplugin_global.h 
+        testplugin_global.h \ 
+    testwidget.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+FORMS += \
+    testwidget.ui
+
+DISTFILES += \
+    testplugin.json
