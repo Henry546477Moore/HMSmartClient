@@ -24,47 +24,61 @@ MainWidget::~MainWidget()
  */
 void MainWidget::on_btnLoadPlugin_clicked()
 {
-    //load plugin
-    if(this->pluginInterface == nullptr)
-    {
-        QDir pluginDir("./plugins");
-        foreach (QString fileName, pluginDir.entryList(QDir::Files)) {
-            qDebug() << fileName;
-            qDebug() << pluginDir.absoluteFilePath(fileName);
-            QPluginLoader pluginLoader(pluginDir.absoluteFilePath(fileName));
-            QObject *plugin = nullptr;
-            plugin = pluginLoader.instance();
-            if(plugin != nullptr){
-                qDebug() << "get successful instance of plugin";
-                this->pluginInterface = qobject_cast<HMSmartPluginInterface*>(plugin);
-                if(this->pluginInterface != nullptr){
-                    qDebug() << "find the plugin";
-                    this->ui->btnLoadPlugin->setText(tr("unload"));;
+    //1)load plugin
+    if(this->pluginInterface)
+    {        
+        qDebug() << "not implements unload function";
+        return;
+    }
 
-                    QJsonObject json = pluginLoader.metaData().value("MetaData").toObject();
-                    qDebug() << "########## MetaData ##########";
-                    QStringList lst;
-                    lst.append(json.value("author").toVariant().toString());
-                    lst.append(json.value("date").toVariant().toString());
-                    lst.append(json.value("name").toVariant().toString());
-                    lst.append(json.value("version").toVariant().toString());
-                    lst.append(json.value("dependencies").toVariant().toString());
-                    lst.append(json.value("keys").toVariant().toString());
-                    qDebug() << lst;
-                    this->ui->txtPluginInfo->setText(lst.join(","));
+    //2)load plugin
+    QDir pluginDir(QString("%1/MainPlugins").arg(QCoreApplication::applicationDirPath()));
+    foreach (QString fileName, pluginDir.entryList(QDir::Files)) {
+        qDebug() << fileName;
+        QPluginLoader pluginLoader(pluginDir.absoluteFilePath(fileName));
+        QObject *plugin = pluginLoader.instance();
+        if(plugin){
+            qDebug() << "get successful instance of plugin";
+            this->pluginInterface = qobject_cast<HMSmartPluginInterface*>(plugin);
+            if(this->pluginInterface != nullptr){
+                qDebug() << "find the plugin";
+                this->ui->btnLoadPlugin->setText(tr("unload"));;
 
-                    QWidget* pluginWidget = this->pluginInterface->GetPluginWidget(this);
-                    if(pluginWidget != nullptr){
-                        this->ui->gridPluginPnl->addWidget(pluginWidget);
-                    }
-                    return;
+                QJsonObject json = pluginLoader.metaData().value("MetaData").toObject();
+                qDebug() << "########## MetaData ##########";
+                QStringList lst;
+                lst.append(json.value("author").toVariant().toString());
+                lst.append(json.value("date").toVariant().toString());
+                lst.append(json.value("name").toVariant().toString());
+                lst.append(json.value("version").toVariant().toString());
+                lst.append(json.value("dependences").toVariant().toString());
+                lst.append(json.value("keys").toVariant().toString());
+                qDebug() << lst;
+                this->ui->txtPluginInfo->setText(lst.join(","));
+
+                QWidget* pluginWidget = this->pluginInterface->GetPluginWidget(this);
+                if(pluginWidget){
+                    this->ui->gridPluginPnl->addWidget(pluginWidget);
                 }
+                return;
             }
-            qDebug() << "not find the plugin";
         }
+        qDebug() << "not find the plugin";
     }
-    //unload plugin
-    else{
-        qDebug() << "not implements function";
+}
+
+/*!
+ * \brief MainWidget::on_btnSend_clicked
+ * send message to plugin
+ * \author lsq
+ * \date 2017-09-29 10:33
+ */
+void MainWidget::on_btnSend_clicked()
+{
+    if(!this->pluginInterface)
+    {
+        qDebug() << "Please load plugin";
+        return;
     }
+    this->pluginInterface->SayToPlugin(this->ui->txtSendToPlugin->text());
 }

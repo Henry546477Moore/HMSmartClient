@@ -2,4 +2,4 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     MainModule \
-    TestPlugin
+    MainPlugins/TestPlugin

@@ -19,3 +19,15 @@ SOURCES += \
 
 DISTFILES += \
     readme
+
+Release:DESTDIR = ./../../HMSmartClient_Release
+Release:OBJECTS_DIR = .obj
+Release:MOC_DIR = .moc
+Release:RCC_DIR = .rcc
+Release:UI_DIR = .ui
+
+Debug:DESTDIR = ./../../HMSmartClient_Debug
+Debug:OBJECTS_DIR = .obj
+Debug:MOC_DIR = .moc
+Debug:RCC_DIR = .rcc
+Debug:UI_DIR = .ui

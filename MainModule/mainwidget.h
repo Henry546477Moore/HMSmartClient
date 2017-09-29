@@ -28,6 +28,13 @@ private slots:
      * \date 2017-09-28 23:06
      */
     void on_btnLoadPlugin_clicked();
+    /*!
+     * \brief MainWidget::on_btnSend_clicked
+     * send message to plugin
+     * \author lsq
+     * \date 2017-09-29 10:33
+     */
+    void on_btnSend_clicked();
 
 private:
     Ui::MainWidget *ui;

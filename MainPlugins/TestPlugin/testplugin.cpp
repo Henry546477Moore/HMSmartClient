@@ -3,6 +3,7 @@
 
 TestPlugin::TestPlugin()
 {
+    this->testwidget = nullptr;
 }
 
 /*!

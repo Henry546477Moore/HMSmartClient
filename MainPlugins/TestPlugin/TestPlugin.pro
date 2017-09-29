@@ -41,3 +41,15 @@ FORMS += \
 
 DISTFILES += \
     testplugin.json
+
+Release:DESTDIR = ./../../../HMSmartClient_Release/MainPlugins
+Release:OBJECTS_DIR = .obj
+Release:MOC_DIR = .moc
+Release:RCC_DIR = .rcc
+Release:UI_DIR = .ui
+
+Debug:DESTDIR = ./../../../HMSmartClient_Debug/MainPlugins
+Debug:OBJECTS_DIR = .obj
+Debug:MOC_DIR = .moc
+Debug:RCC_DIR = .rcc
+Debug:UI_DIR = .ui

@@ -3,7 +3,7 @@
 
 #include "testplugin_global.h"
 #include <QObject>
-#include "./../MainModule/hmsmartplugininterface.h"
+#include "./../../MainModule/hmsmartplugininterface.h"
 #include <QWidget>
 #include "testwidget.h"
 
