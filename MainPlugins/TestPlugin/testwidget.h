@@ -2,6 +2,7 @@
 #define TESTWIDGET_H
 
 #include <QWidget>
+#include "./../../SharePluginLibrary/hmpluginwidgetbase.h"
 
 namespace Ui {
 class TestWidget;

@@ -8,6 +8,11 @@ TestWidget::TestWidget(QWidget *parent) :
     ui->setupUi(this);
 }
 
+TestWidget::~TestWidget()
+{
+    delete ui;
+}
+
 /*!
  * \brief SayToWidget main module comunication to plugin widget msg
  * \param msg message into
@@ -17,9 +22,4 @@ TestWidget::TestWidget(QWidget *parent) :
 void TestWidget::SayToWidget(const QString &msg)
 {
     this->ui->txtFromMain->append(QString("%1\n").arg(msg));
-}
-
-TestWidget::~TestWidget()
-{
-    delete ui;
 }

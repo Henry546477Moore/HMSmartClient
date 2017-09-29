@@ -3,6 +3,8 @@
 #include <QDir>
 #include <QDebug>
 #include <QPluginLoader>
+#include "./../SharePluginLibrary/hmplugininterface.h"
+#include "./../SharePluginLibrary/hmpluginwidgetbase.h"
 
 MainWidget::MainWidget(QWidget *parent) :
     QWidget(parent),
@@ -39,7 +41,7 @@ void MainWidget::on_btnLoadPlugin_clicked()
         QObject *plugin = pluginLoader.instance();
         if(plugin){
             qDebug() << "get successful instance of plugin";
-            this->pluginInterface = qobject_cast<HMSmartPluginInterface*>(plugin);
+            this->pluginInterface = qobject_cast<HMPluginInterface*>(plugin);
             if(this->pluginInterface != nullptr){
                 qDebug() << "find the plugin";
                 this->ui->btnLoadPlugin->setText(tr("unload"));;

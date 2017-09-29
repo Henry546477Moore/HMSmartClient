@@ -1,15 +1,15 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-09-28T22:44:34
+# Project created by QtCreator 2017-09-29T16:05:56
 #
 #-------------------------------------------------
 
-QT       += widgets uiplugin
+QT       += widgets
 
-TARGET = TestPlugin
+TARGET = SharePluginLibrary
 TEMPLATE = lib
-QMAKE_LIBS_OPENGL = -lGL
-DEFINES += TESTPLUGIN_LIBRARY
+
+DEFINES += HMPLUGINWIDGETBASE_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -23,33 +23,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        testplugin.cpp \
-    testwidget.cpp
+    hmpluginwidgetbase.cpp
 
 HEADERS += \
-        testplugin.h \
-        testplugin_global.h \ 
-    testwidget.h
+    hmpluginwidgetbase.h \
+    hmplugininterface.h \
+    hmpluginwidgetbase_global.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
 
-FORMS += \
-    testwidget.ui \
-    testwidget.ui
-
-DISTFILES += \
-    testplugin.json
-
-Release:DESTDIR = ./../../../HMSmartClient_Release/MainPlugins
+Release:DESTDIR = ./../../HMSmartClient_Release/ShareLibray
 Release:OBJECTS_DIR = .obj
 Release:MOC_DIR = .moc
 Release:RCC_DIR = .rcc
 Release:UI_DIR = .ui
 
-Debug:DESTDIR = ./../../../HMSmartClient_Debug/MainPlugins
+Debug:DESTDIR = ./../../HMSmartClient_Debug/ShareLibray
 Debug:OBJECTS_DIR = .obj
 Debug:MOC_DIR = .moc
 Debug:RCC_DIR = .rcc

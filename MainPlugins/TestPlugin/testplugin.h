@@ -3,8 +3,7 @@
 
 #include "testplugin_global.h"
 #include <QObject>
-#include "./../../MainModule/hmsmartplugininterface.h"
-#include <QWidget>
+#include "./../../SharePluginLibrary/hmplugininterface.h"
 #include "testwidget.h"
 
 /*!
@@ -12,11 +11,11 @@
  * \author lsq
  * \date 2017-09-28 23:25
  */
-class TESTPLUGINSHARED_EXPORT TestPlugin : public QObject, HMSmartPluginInterface
+class TESTPLUGINSHARED_EXPORT TestPlugin : public QObject, HMPluginInterface
 {
 Q_OBJECT
     Q_PLUGIN_METADATA(IID "com.lsquange/1.0" FILE "testplugin.json")
-    Q_INTERFACES(HMSmartPluginInterface)
+    Q_INTERFACES(HMPluginInterface)
 public:
     TestPlugin();
     /*!

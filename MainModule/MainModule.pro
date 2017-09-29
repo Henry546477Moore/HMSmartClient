@@ -7,7 +7,6 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
-    hmsmartplugininterface.h \
     mainwidget.h
 
 FORMS += \
@@ -18,7 +17,7 @@ SOURCES += \
     main.cpp
 
 DISTFILES += \
-    readme
+    readme.txt
 
 Release:DESTDIR = ./../../HMSmartClient_Release
 Release:OBJECTS_DIR = .obj

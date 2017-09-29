@@ -1,21 +1,22 @@
-#ifndef HMSMARTPLUGININTERFACE_H
-#define HMSMARTPLUGININTERFACE_H
+#ifndef HMPLUGININTERFACE_H
+#define HMPLUGININTERFACE_H
 
 #include <QString>
-#include <QWidget>
 
-#define HMSmartPluginInterface_iid "com.lsquange/1.0"
+#define HMPluginInterface_iid "com.lsquange/1.0"
 
+class QWidget;
+class HMPluginWidgetBase;
 /*!
  * \brief The HMSmartPluginInterface class
  * HMSmartClient plugin interface
  * \author lsq
  * \date 2017-09-28 22:57
  */
-class HMSmartPluginInterface
+class HMPluginInterface
 {
 public:
-    virtual ~HMSmartPluginInterface(){}
+    virtual ~HMPluginInterface(){}
     /*!
      * \brief SayToPlugin main module comunication to plugin
      * \param msg comunication message into
@@ -24,7 +25,7 @@ public:
      */
     virtual void SayToPlugin(const QString &msg) = 0;
     /*!
-     * \brief GetPluginWidget ask plugin create a widget instance
+     * \brief GetPluginWidget: plugin main widget
      * \param parent widget instance parent
      * \return  widget
      * \author lsq
@@ -32,6 +33,6 @@ public:
      */
     virtual QWidget* GetPluginWidget(QWidget *parent = 0) = 0;
 };
-Q_DECLARE_INTERFACE(HMSmartPluginInterface, HMSmartPluginInterface_iid)
+Q_DECLARE_INTERFACE(HMPluginInterface, HMPluginInterface_iid)
 
-#endif // HMSMARTPLUGININTERFACE_H
+#endif // HMPLUGININTERFACE_H

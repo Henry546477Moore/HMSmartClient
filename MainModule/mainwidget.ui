@@ -72,16 +72,23 @@
     <string>Send</string>
    </property>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QGroupBox" name="groupPlugin">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>190</y>
+     <y>180</y>
      <width>461</width>
-     <height>211</height>
+     <height>221</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridPluginPnl"/>
+   <property name="title">
+    <string>Plugin Widget</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridPluginPnl"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

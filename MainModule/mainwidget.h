@@ -2,12 +2,12 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
-#include "hmsmartplugininterface.h"
 
 namespace Ui {
 class MainWidget;
 }
 
+class HMPluginInterface;
 /*!
  * \brief The MainWidget class main module widget
  * \author lsq
@@ -38,7 +38,7 @@ private slots:
 
 private:
     Ui::MainWidget *ui;
-    HMSmartPluginInterface *pluginInterface;        //save plugin point
+    HMPluginInterface *pluginInterface;        //save plugin point
 };
 
 #endif // MAINWIDGET_H
