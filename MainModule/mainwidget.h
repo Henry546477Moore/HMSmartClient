@@ -2,6 +2,7 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
+#include <QPlainTextEdit>
 
 namespace Ui {
 class MainWidget;
@@ -35,6 +36,17 @@ private slots:
      * \date 2017-09-29 10:33
      */
     void on_btnSend_clicked();
+    /*!
+     * \brief receivePluginMsg
+     * receive plugin message
+     * \param msg message info
+     * \author lsq
+     * \date 2017-09-30 10:31
+     */
+    void receivePluginMsg(const QString &msg);
+
+public:
+    QPlainTextEdit* LogEdit;
 
 private:
     Ui::MainWidget *ui;

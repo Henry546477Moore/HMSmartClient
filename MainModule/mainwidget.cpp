@@ -3,14 +3,16 @@
 #include <QDir>
 #include <QDebug>
 #include <QPluginLoader>
-#include "./../SharePluginLibrary/hmplugininterface.h"
-#include "./../SharePluginLibrary/hmpluginwidgetbase.h"
+#include "hmplugininterface.h"
+#include "hmpluginwidgetbase.h"
 
 MainWidget::MainWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWidget)
 {
     ui->setupUi(this);
+    this->ui->txtLog->setMaximumBlockCount(10);
+    this->LogEdit = this->ui->txtLog;
     this->pluginInterface = nullptr;
 }
 
@@ -58,8 +60,9 @@ void MainWidget::on_btnLoadPlugin_clicked()
                 qDebug() << lst;
                 this->ui->txtPluginInfo->setText(lst.join(","));
 
-                QWidget* pluginWidget = this->pluginInterface->GetPluginWidget(this);
+                HMPluginWidgetBase* pluginWidget = this->pluginInterface->GetPluginWidget(this);
                 if(pluginWidget){
+                    connect(pluginWidget, &HMPluginWidgetBase::SayToApplication, this, &MainWidget::receivePluginMsg);
                     this->ui->gridPluginPnl->addWidget(pluginWidget);
                 }
                 return;
@@ -67,6 +70,18 @@ void MainWidget::on_btnLoadPlugin_clicked()
         }
         qDebug() << "not find the plugin";
     }
+}
+
+/*!
+ * \brief receivePluginMsg
+ * receive plugin message
+ * \param msg message info
+ * \author lsq
+ * \date 2017-09-30 10:31
+ */
+void MainWidget::receivePluginMsg(const QString &msg)
+{
+    this->ui->txtPluginInfo->append(QString("%1\n").arg(msg));
 }
 
 /*!

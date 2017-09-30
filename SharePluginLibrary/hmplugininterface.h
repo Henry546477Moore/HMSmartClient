@@ -31,7 +31,7 @@ public:
      * \author lsq
      * \date 2017-09-28 22:59
      */
-    virtual QWidget* GetPluginWidget(QWidget *parent = 0) = 0;
+    virtual HMPluginWidgetBase* GetPluginWidget(QWidget *parent = 0) = 0;
 };
 Q_DECLARE_INTERFACE(HMPluginInterface, HMPluginInterface_iid)
 

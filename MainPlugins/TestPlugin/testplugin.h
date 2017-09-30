@@ -3,7 +3,7 @@
 
 #include "testplugin_global.h"
 #include <QObject>
-#include "./../../SharePluginLibrary/hmplugininterface.h"
+#include "hmplugininterface.h"
 #include "testwidget.h"
 
 /*!
@@ -32,7 +32,7 @@ public:
      * \author lsq
      * \date 2017-09-28 22:59
      */
-    QWidget* GetPluginWidget(QWidget *parent);
+    HMPluginWidgetBase* GetPluginWidget(QWidget *parent);
 
 private:
     TestWidget* testwidget;            //plugin widget

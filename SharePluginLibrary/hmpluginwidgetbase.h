@@ -11,6 +11,10 @@ class HMPLUGINWIDGETBASE_EXPORT HMPluginWidgetBase: public QWidget
 public:
     HMPluginWidgetBase(QWidget *parent = 0);
     ~HMPluginWidgetBase();
+
+signals:
+    void SayToApplication(const QString &msg);
+
 };
 
 #endif // HMPLUGINWIDGETBASE_H

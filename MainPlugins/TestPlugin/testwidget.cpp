@@ -2,7 +2,7 @@
 #include "ui_testwidget.h"
 
 TestWidget::TestWidget(QWidget *parent) :
-    QWidget(parent),
+    HMPluginWidgetBase(parent),
     ui(new Ui::TestWidget)
 {
     ui->setupUi(this);
@@ -22,4 +22,9 @@ TestWidget::~TestWidget()
 void TestWidget::SayToWidget(const QString &msg)
 {
     this->ui->txtFromMain->append(QString("%1\n").arg(msg));
+}
+
+void TestWidget::on_btnSend_clicked()
+{
+    emit SayToApplication(this->ui->txtSendToMainMdoule->text());
 }

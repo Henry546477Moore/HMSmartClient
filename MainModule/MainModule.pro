@@ -3,6 +3,13 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = HMSmartClient
+
+CONFIG += debug_and_release
+CONFIG(debug, debug|release){
+    unix: TARGET = $$join(TARGET,,,_debug)
+    else: TARGET = $$join(TARGET,,,d)
+}
+
 TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
@@ -17,16 +24,18 @@ SOURCES += \
     main.cpp
 
 DISTFILES += \
-    readme.txt
+    readme.txt \
+    config.ini
 
-Release:DESTDIR = ./../../HMSmartClient_Release
-Release:OBJECTS_DIR = .obj
-Release:MOC_DIR = .moc
-Release:RCC_DIR = .rcc
-Release:UI_DIR = .ui
+DESTDIR = ./../../HMSmartClient
+OBJECTS_DIR = .obj
+MOC_DIR = .moc
+RCC_DIR = .rcc
+UI_DIR = .ui
 
-Debug:DESTDIR = ./../../HMSmartClient_Debug
-Debug:OBJECTS_DIR = .obj
-Debug:MOC_DIR = .moc
-Debug:RCC_DIR = .rcc
-Debug:UI_DIR = .ui
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibrary
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibraryd
+else:unix: LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibrary
+
+INCLUDEPATH += $$PWD/../SharePluginLibrary
+DEPENDPATH += $$PWD/../SharePluginLibrary

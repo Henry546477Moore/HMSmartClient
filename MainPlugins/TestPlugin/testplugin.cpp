@@ -29,7 +29,7 @@ void TestPlugin::SayToPlugin(const QString &msg)
  * \author lsq
  * \date 2017-09-28 22:59
  */
-QWidget* TestPlugin::GetPluginWidget(QWidget *parent)
+HMPluginWidgetBase* TestPlugin::GetPluginWidget(QWidget *parent)
 {
     if(this->testwidget == nullptr)
     {

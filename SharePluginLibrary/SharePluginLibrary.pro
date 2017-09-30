@@ -7,9 +7,17 @@
 QT       += widgets
 
 TARGET = SharePluginLibrary
+
+CONFIG += debug_and_release
+CONFIG(debug, debug|release){
+    unix: TARGET = $$join(TARGET,,,_debug)
+    else: TARGET = $$join(TARGET,,,d)
+}
+
 TEMPLATE = lib
 
-DEFINES += HMPLUGINWIDGETBASE_LIBRARY
+DEFINES += HMPLUGINWIDGETBASE_LIBRARY \
+           HMAPPCONFIG_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -28,21 +36,17 @@ SOURCES += \
 HEADERS += \
     hmpluginwidgetbase.h \
     hmplugininterface.h \
-    hmpluginwidgetbase_global.h
+    hmpluginwidgetbase_global.h \
+    hmappconfig.h \
+    hmappconfig_global.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
 
-Release:DESTDIR = ./../../HMSmartClient_Release/ShareLibray
-Release:OBJECTS_DIR = .obj
-Release:MOC_DIR = .moc
-Release:RCC_DIR = .rcc
-Release:UI_DIR = .ui
-
-Debug:DESTDIR = ./../../HMSmartClient_Debug/ShareLibray
-Debug:OBJECTS_DIR = .obj
-Debug:MOC_DIR = .moc
-Debug:RCC_DIR = .rcc
-Debug:UI_DIR = .ui
+DESTDIR = ./../../HMSmartClient/ShareLibray
+OBJECTS_DIR = .obj
+MOC_DIR = .moc
+RCC_DIR = .rcc
+UI_DIR = .ui

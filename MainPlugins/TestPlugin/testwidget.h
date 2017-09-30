@@ -2,7 +2,7 @@
 #define TESTWIDGET_H
 
 #include <QWidget>
-#include "./../../SharePluginLibrary/hmpluginwidgetbase.h"
+#include "hmpluginwidgetbase.h"
 
 namespace Ui {
 class TestWidget;
@@ -13,7 +13,7 @@ class TestWidget;
  * \author lsq
  * \date 2017-09-28 23:31
  */
-class TestWidget : public QWidget
+class TestWidget : public HMPluginWidgetBase
 {
     Q_OBJECT
 
@@ -28,6 +28,9 @@ public:
      * \date 2017-09-28 23:32
      */
     void SayToWidget(const QString &msg);
+
+private slots:
+    void on_btnSend_clicked();
 
 private:
     Ui::TestWidget *ui;
