@@ -3,6 +3,7 @@
 
 #include "hmappconfig_global.h"
 #include <QString>
+#include <QStringList>
 
 /*!
  * \brief The HMAppConfig struct
@@ -79,7 +80,7 @@ public:
         this->DisplayMaxLogRowCount = this->DefaultDisplayMaxLogRowCount;
         this->DisplayTimeColor = this->DefaultDisplayTimeColor;
         this->DisplayLogTypeColor = this->DefaultDisplayLogTypeColor;
-        this->DisplayLogTypeColorList = this->DisplayLogTypeColor.split(" ", SkipEmptyParts);
+        this->DisplayLogTypeColorList = this->DisplayLogTypeColor.split(" ", QString::SkipEmptyParts);
     }
 };
 
