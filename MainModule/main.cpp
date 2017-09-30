@@ -51,7 +51,7 @@ void HandlerMessageInfo(QtMsgType type, const QMessageLogContext &context, const
     }
 
     //create current log file
-    QString currentLogFilePath = QString("%1/%2.log").arg(logDirPath).arg(AppConfig->LogFileNameFormat);
+    QString currentLogFilePath = QString("%1/%2.log").arg(logDirPath).arg(QDateTime::currentDateTime().toString(AppConfig->LogFileNameFormat));
     QFile currentLogFile(currentLogFilePath);
     currentLogFile.open(QIODevice::ReadWrite|QIODevice::Append);
     if(-1 != AppConfig->MaxLogFileSize && currentLogFile.size() > AppConfig->MaxLogFileSize){
@@ -71,7 +71,7 @@ void HandlerMessageInfo(QtMsgType type, const QMessageLogContext &context, const
 
     //create log message string
     QString message = QString("%1 %2 %3 %4 %5 %6")
-            .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.ddd"))
+            .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz"))
             .arg(typeEnum.find(type).value())
             .arg(msg)
             .arg(context.file)

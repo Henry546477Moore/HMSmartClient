@@ -35,7 +35,7 @@ UI_DIR = .ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibrary
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibraryd
-else:unix: LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibrary
+else:unix:!macx: LIBS += -L$$PWD/../HMSmartClient/ShareLibray/ -lSharePluginLibrary_debug
 
 INCLUDEPATH += $$PWD/../SharePluginLibrary
 DEPENDPATH += $$PWD/../SharePluginLibrary
